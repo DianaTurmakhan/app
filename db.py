@@ -9,7 +9,12 @@ from sqlalchemy.sql import text
 import datetime
 from sqlalchemy import insert
 from sqlalchemy import update
+import psycopg2
 
+def init_connection():
+    return psycopg2.connect(**st.secrets["postgres"])
+
+connection = init_connection()
 
 # first table 
 user = st.secrets.postgres.user

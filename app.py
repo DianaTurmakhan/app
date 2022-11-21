@@ -1,7 +1,9 @@
 import pandas as pd
 import streamlit as st
-
 import db
+import psycopg2
+
+
 from db import (create_table, delete_record, get_description, p_engine,
                 update_record, view_all_data, view_all_desc, view_all_id,
                 view_id, write_record)
