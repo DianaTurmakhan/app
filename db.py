@@ -11,20 +11,13 @@ from sqlalchemy import insert
 from sqlalchemy import update
 import psycopg2
 
-def init_connection():
-    return psycopg2.connect(**st.secrets["postgres"])
-
-connection = init_connection()
 
 # first table 
-user = st.secrets.postgres.user
-pw =  st.secrets.postgres.password
-address = st.secrets.postgres.host
-port =  st.secrets.postgres.port
-db_name =  st.secrets.postgres.dbname
+p_engine = create_engine(
+        st.secrets['postgres'],
+        connect_args={'options': f'-csearch_path=Assignment2'}
+    )
 
-p_engine = db.create_engine(f"postgresql://{user}:{pw}@{address}:{port}/{db_name}", echo = False)
-connection = p_engine.connect()
 metadata = db.MetaData()
 
 discover = db.Table('discover', metadata, autoload=True, autoload_with=p_engine)
