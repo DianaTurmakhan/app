@@ -12,7 +12,13 @@ from sqlalchemy import update
 
 
 # first table 
-p_engine = create_engine("postgresql://postgres:Diana@localhost:5433/Assignment2")
+user = st.secrets["user"]
+pw = st.secrets["password"]
+address = st.secrets["host"]
+port = st.secrets["port"]
+db_name = st.secrets["dbname"]
+
+p_engine = db.create_engine(f"postgresql://{user}:{pw}@{address}:{port}/{db_name}", echo = False)
 connection = p_engine.connect()
 metadata = db.MetaData()
 
