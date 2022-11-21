@@ -12,11 +12,11 @@ from sqlalchemy import update
 
 
 # first table 
-user = st.secrets["user"]
-pw = st.secrets["password"]
-address = st.secrets["host"]
-port = st.secrets["port"]
-db_name = st.secrets["dbname"]
+user = st.secrets.postgres.user
+pw =  st.secrets.postgres.password
+address = st.secrets.postgres.host
+port =  st.secrets.postgres.port
+db_name =  st.secrets.postgres.dbname
 
 p_engine = db.create_engine(f"postgresql://{user}:{pw}@{address}:{port}/{db_name}", echo = False)
 connection = p_engine.connect()
